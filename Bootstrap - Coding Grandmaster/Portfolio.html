@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Portfolio</title>
+
+    <style>
+        /* General styling */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f4f6f8;
+            color: #333333;
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+        }
+
+        /* CSS Grid layout */
+
+        .grid-container {
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            grid-template-areas:
+                "header header header header"
+                "nav nav nav nav"
+                "intro intro intro sidebar"
+                "about about skills sidebar"
+                "projects projects projects projects"
+                "education education contact contact"
+                "footer footer footer footer";
+
+            gap: 15px;
+            padding: 15px;
+        }
+
+        /* Header */
+
+        header {
+            grid-area: header;
+
+            background-color: #243b55;
+            color: white;
+            min-height: 280px;
+            padding: 30px;
+            border: 2px solid #18293d;
+            border-radius: 12px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-text {
+            width: 60%;
+        }
+
+        header h1 {
+            color: white;
+            font-size: 50px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 3px 3px #111111;
+            margin-bottom: 10px;
+        }
+
+        header h2 {
+            color: lightblue;
+            font-size: 25px;
+            font-style: italic;
+        }
+
+        header p {
+            color: white;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .profile-image-box {
+            position: relative;
+        }
+
+        .profile-image {
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border: 6px solid white;
+            border-radius: 50%;
+            box-shadow: 6px 6px 15px #111111;
+        }
+
+        .available-badge {
+            position: absolute;
+            right: -15px;
+            bottom: 15px;
+
+            background-color: green;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        /* Navigation */
+
+        nav {
+            grid-area: nav;
+
+            position: sticky;
+            top: 0;
+            z-index: 10;
+
+            background-color: #d9f3ff;
+            padding: 10px;
+            border: 1px solid #243b55;
+            border-radius: 8px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        nav li {
+            padding: 8px 15px;
+            border: 1px solid #243b55;
+            border-radius: 6px;
+        }
+
+        nav a {
+            color: #243b55;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            color: red;
+            text-decoration: underline;
+        }
+
+        /* Common section styling */
+
+        section,
+        aside {
+            padding: 20px;
+            border: 1px solid #333333;
+            border-radius: 10px;
+        }
+
+        section h2,
+        aside h2 {
+            background-color: #243b55;
+            color: white;
+            padding: 10px;
+            margin-top: 0;
+
+            font-size: 25px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+
+            border-radius: 6px;
+        }
+
+        p {
+            font-size: 17px;
+            line-height: 1.6;
+        }
+
+        /* Introduction */
+
+        #intro {
+            grid-area: intro;
+            background-color: lightcyan;
+            text-align: center;
+        }
+
+        #intro h2 {
+            text-shadow: 2px 2px black;
+        }
+
+        .highlight {
+            color: darkblue;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        /* Sidebar */
+
+        aside {
+            grid-area: sidebar;
+            background-color: lightyellow;
+        }
+
+        aside h3 {
+            color: darkgreen;
+            font-size: 21px;
+            text-decoration: underline;
+        }
+
+        aside ul {
+            padding-left: 25px;
+        }
+
+        aside li {
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
+
+        /* About */
+
+        #about {
+            grid-area: about;
+            background-color: lightpink;
+        }
+
+        .about-content {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .about-content img {
+            width: 230px;
+            height: 180px;
+            object-fit: cover;
+            border: 4px solid white;
+            border-radius: 10px;
+            box-shadow: 5px 5px 10px gray;
+        }
+
+        .about-text {
+            width: 60%;
+        }
+
+        /* Skills */
+
+        #skills {
+            grid-area: skills;
+            background-color: lightgreen;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .skill {
+            background-color: white;
+            color: darkgreen;
+            width: 120px;
+            padding: 12px;
+            text-align: center;
+            font-weight: bold;
+
+            border: 2px solid darkgreen;
+            border-radius: 20px;
+            box-shadow: 3px 3px 6px gray;
+        }
+
+        /* Projects */
+
+        #projects {
+            grid-area: projects;
+            background-color: lavender;
+        }
+
+        .project-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .project-card {
+            position: relative;
+
+            background-color: white;
+            padding: 20px;
+            border: 2px solid #243b55;
+            border-radius: 10px;
+            box-shadow: 5px 5px 12px gray;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .project-card h3 {
+            color: darkblue;
+            font-size: 22px;
+            text-align: center;
+            text-decoration: underline;
+        }
+
+        .project-card a {
+            color: darkred;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .project-card a:hover {
+            color: blue;
+            text-decoration: underline;
+        }
+
+        .project-badge {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+
+            background-color: orange;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* Education */
+
+        #education {
+            grid-area: education;
+            background-color: wheat;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        th {
+            background-color: brown;
+            color: white;
+            padding: 12px;
+            text-transform: uppercase;
+        }
+
+        td {
+            background-color: white;
+            padding: 12px;
+            text-align: center;
+        }
+
+        tr:last-child {
+            color: darkred;
+        }
+
+        /* Contact */
+
+        #contact {
+            grid-area: contact;
+            background-color: lightgoldenrodyellow;
+        }
+
+        .contact-box {
+            background-color: white;
+            width: 85%;
+            padding: 20px;
+            margin: 20px auto;
+
+            border: 2px solid orange;
+            border-radius: 10px;
+            box-shadow: 5px 5px 10px gray;
+        }
+
+        .contact-box p {
+            margin: 12px;
+        }
+
+        .contact-label {
+            color: darkred;
+            font-weight: bold;
+        }
+
+        .contact-box a {
+            color: blue;
+        }
+
+        /* Favourite quote */
+
+        .quote {
+            color: darkorange;
+            font-size: 19px;
+            font-style: italic;
+            text-align: center;
+        }
+
+        /* Fixed button */
+
+        button {
+            position: fixed;
+            right: 30px;
+            bottom: 30px;
+            z-index: 20;
+
+            background-color: red;
+            color: white;
+            padding: 12px 18px;
+
+            font-size: 17px;
+            font-weight: bold;
+            text-transform: uppercase;
+
+            border: none;
+            border-radius: 8px;
+            box-shadow: 4px 4px 8px gray;
+        }
+
+        button:hover {
+            background-color: darkred;
+        }
+
+        /* Footer */
+
+        footer {
+            grid-area: footer;
+
+            background-color: #243b55;
+            color: white;
+            padding: 25px;
+            border: 1px solid black;
+            border-radius: 10px;
+
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        footer p,
+        footer address {
+            color: white;
+        }
+
+        footer span {
+            color: yellow;
+            font-weight: bold;
+        }
+
+        /* Responsive design */
+
+        @media screen and (max-width: 900px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+
+                grid-template-areas:
+                    "header"
+                    "nav"
+                    "intro"
+                    "about"
+                    "skills"
+                    "sidebar"
+                    "projects"
+                    "education"
+                    "contact"
+                    "footer";
+            }
+
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .header-text {
+                width: 100%;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .about-text {
+                width: 100%;
+            }
+
+            .project-container {
+                grid-template-columns: 1fr;
+            }
+
+            footer {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="grid-container">
+
+        <!-- Header -->
+
+        <header id="home">
+
+            <div class="header-text">
+                <h1>My Portfolio</h1>
+
+                <h2>Student and Future Web Developer</h2>
+
+                <p>
+                    Hello! I am learning HTML and CSS. I enjoy creating
+                    colourful, useful and attractive websites.
+                </p>
+            </div>
+
+            <div class="profile-image-box">
+                <img
+                    class="profile-image"
+                    src="profile.jpg"
+                    alt="My profile picture"
+                >
+
+                <span class="available-badge">Available to Learn</span>
+            </div>
+
+        </header>
+
+        <!-- Navigation -->
+
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- Introduction -->
+
+        <section id="intro">
+            <h2>Welcome to My Portfolio</h2>
+
+            <p>
+                This portfolio shows the HTML and CSS skills that I have learned.
+                It uses <span class="highlight">semantic HTML, colours, text
+                styling, box model, positioning, Flexbox and CSS Grid</span>.
+            </p>
+
+            <p class="quote">
+                <q>Every expert was once a beginner.</q>
+            </p>
+        </section>
+
+        <!-- Sidebar -->
+
+        <aside>
+            <h2>Quick Information</h2>
+
+            <h3>My Interests</h3>
+
+            <ul>
+                <li>Web development</li>
+                <li>Learning new technology</li>
+                <li>Drawing and designing</li>
+                <li>Reading books</li>
+                <li>Playing sports</li>
+            </ul>
+
+            <h3>Current Goal</h3>
+
+            <p>
+                My goal is to become a confident web developer and create
+                websites that help people.
+            </p>
+        </aside>
+
+        <!-- About -->
+
+        <section id="about">
+            <h2>About Me</h2>
+
+            <div class="about-content">
+
+                <img
+                    src="about-me.jpg"
+                    alt="Student working on a computer"
+                >
+
+                <div class="about-text">
+                    <p>
+                        My name is <strong>Your Name</strong>. I am a student
+                        who enjoys learning how websites are created.
+                    </p>
+
+                    <p>
+                        I started with basic HTML tags and later learned about
+                        images, videos, links, tables and semantic elements.
+                    </p>
+
+                    <p>
+                        I have also learned CSS properties such as colours,
+                        fonts, margins, padding, positioning, Flexbox and Grid.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Skills -->
+
+        <section id="skills">
+            <h2>My Skills</h2>
+
+            <div class="skills-container">
+                <div class="skill">HTML</div>
+                <div class="skill">CSS</div>
+                <div class="skill">Flexbox</div>
+                <div class="skill">CSS Grid</div>
+                <div class="skill">Tables</div>
+                <div class="skill">Forms</div>
+                <div class="skill">Images</div>
+                <div class="skill">Videos</div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+
+        <section id="projects">
+            <h2>My Projects</h2>
+
+            <div class="project-container">
+
+                <article class="project-card">
+                    <span class="project-badge">Project 1</span>
+
+                    <img
+                        src="book-club.jpg"
+                        alt="Books in a library"
+                    >
+
+                    <h3>Book Club Website</h3>
+
+                    <p>
+                        A website about a school book club with teachers,
+                        book reviews, videos and opening timings.
+                    </p>
+
+                    <a href="#">View Project</a>
+                </article>
+
+                <article class="project-card">
+                    <span class="project-badge">Project 2</span>
+
+                    <img
+                        src="cuisine.jpg"
+                        alt="Indian cuisine"
+                    >
+
+                    <h3>Indian Cuisines Blog</h3>
+
+                    <p>
+                        A food blog showing regional Indian cuisines, popular
+                        dishes, images, tables and food facts.
+                    </p>
+
+                    <a href="#">View Project</a>
+                </article>
+
+                <article class="project-card">
+                    <span class="project-badge">Project 3</span>
+
+                    <img
+                        src="health.jpg"
+                        alt="Children exercising"
+                    >
+
+                    <h3>Kids Health Guide</h3>
+
+                    <p>
+                        A health website containing exercise information,
+                        useful tips, images and an educational video.
+                    </p>
+
+                    <a href="#">View Project</a>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Education -->
+
+        <section id="education">
+            <h2>Education and Learning</h2>
+
+            <table>
+                <tr>
+                    <th>Course</th>
+                    <th>Topic</th>
+                    <th>Status</th>
+                </tr>
+
+                <tr>
+                    <td>HTML Basics</td>
+                    <td>Tags, links and lists</td>
+                    <td>Completed</td>
+                </tr>
+
+                <tr>
+                    <td>HTML Media</td>
+                    <td>Images, audio and videos</td>
+                    <td>Completed</td>
+                </tr>
+
+                <tr>
+                    <td>CSS Basics</td>
+                    <td>Colours and text styling</td>
+                    <td>Completed</td>
+                </tr>
+
+                <tr>
+                    <td>CSS Layout</td>
+                    <td>Flexbox and Grid</td>
+                    <td>Learning</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- Contact -->
+
+        <section id="contact">
+            <h2>Contact Me</h2>
+
+            <div class="contact-box">
+                <p>
+                    <span class="contact-label">Name:</span>
+                    Your Name
+                </p>
+
+                <p>
+                    <span class="contact-label">Email:</span>
+                    <a href="mailto:student@example.com">
+                        student@example.com
+                    </a>
+                </p>
+
+                <p>
+                    <span class="contact-label">Phone:</span>
+                    +91 12345 67890
+                </p>
+
+                <p>
+                    <span class="contact-label">Location:</span>
+                    India
+                </p>
+
+                <address>
+                    Thank you for visiting my portfolio!
+                </address>
+            </div>
+        </section>
+
+        <!-- Fixed button -->
+
+        <button onclick="location.href='#contact'">
+            Contact Me
+        </button>
+
+        <!-- Footer -->
+
+        <footer>
+            <p>
+                Copyright &#169; 2026
+                <span>My Portfolio</span>
+            </p>
+
+            <address>
+                Created by a future web developer
+            </address>
+
+            <p>Keep Learning! &#128512;</p>
+        </footer>
+
+    </div>
+
+</body>
+
+</html>
