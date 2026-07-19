@@ -1,0 +1,93 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Change Text Colour</title>
+
+  <style>
+    body {
+      background-color: lightyellow;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 30px;
+    }
+
+    h1 {
+      color: darkblue;
+    }
+
+    #myText {
+      background-color: white;
+      color: black;
+      width: 60%;
+      padding: 20px;
+      margin: 20px auto;
+      border: 2px solid darkblue;
+      border-radius: 10px;
+      font-size: 24px;
+    }
+
+    button {
+      background-color: darkblue;
+      color: white;
+      padding: 10px 16px;
+      margin: 8px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Change the Colour of the Text</h1>
+
+  <p id="myText">
+    JavaScript can change my text colour.
+  </p>
+
+  <button onclick="changeToRed()">Red</button>
+
+  <button onclick="changeToBlue()">Blue</button>
+
+  <button onclick="changeToGreen()">Green</button>
+
+  <button onclick="resetColour()">Reset</button>
+
+  <script>
+    let text = document.getElementById("myText");
+
+    function changeToRed() {
+      text.style.color = "red";
+    }
+
+    function changeToBlue() {
+      text.style.color = "#0000ff";
+    }
+
+    function changeToGreen() {
+      text.style.color = "rgb(0, 128, 0)";
+    }
+
+    function resetColour() {
+      text.style.color = "black";
+    }
+
+    text.onmouseenter = function () {
+      text.style.backgroundColor = "lightblue";
+    };
+
+    text.onmouseleave = function () {
+      text.style.backgroundColor = "white";
+    };
+  </script>
+
+</body>
+
+</html>
+```

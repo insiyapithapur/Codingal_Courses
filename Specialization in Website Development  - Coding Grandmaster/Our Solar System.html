@@ -1,0 +1,99 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Our Solar System</title>
+
+  <style>
+    body {
+      background-color: #101b3d;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+
+    header {
+      background-color: #243b70;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .planet-box {
+      background-color: lightyellow;
+      color: #222222;
+      padding: 15px;
+      margin: 20px auto;
+      width: 70%;
+      border: 3px solid orange;
+      border-radius: 10px;
+    }
+
+    .fact-box {
+      background-color: darkblue;
+      color: white;
+      padding: 15px;
+      margin: 20px auto;
+      width: 70%;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1 id="heading">Our Solar System</h1>
+
+    <p id="description">
+      The solar system contains the Sun, planets, moons and many other objects.
+    </p>
+  </header>
+
+  <script>
+    // Step 1: Change the heading using innerHTML
+    let heading = document.getElementById("heading");
+
+    heading.innerHTML = "🌞 Our Amazing Solar System";
+
+
+    // Step 2: Change the description
+    let description = document.getElementById("description");
+
+    description.innerHTML =
+      "<strong>Our solar system has eight planets that travel around the Sun.</strong>";
+
+
+    // Step 3: Create a new div element
+    let planetBox = document.createElement("div");
+
+    planetBox.id = "planets";
+    planetBox.className = "planet-box";
+
+    planetBox.innerHTML =
+      "<h2>🪐 The Eight Planets</h2>" +
+      "<p>Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus and Neptune.</p>";
+
+    document.body.append(planetBox);
+
+
+    // Step 4: Create another information box
+    let factBox = document.createElement("div");
+
+    factBox.className = "fact-box";
+
+    factBox.innerHTML =
+      "<h2>🚀 Interesting Fact</h2>" +
+      "<p>Jupiter is the largest planet in our solar system.</p>";
+
+    document.body.append(factBox);
+  </script>
+
+</body>
+
+</html>
+```

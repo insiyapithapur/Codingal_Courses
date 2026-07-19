@@ -1,0 +1,87 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>My Hobbies</title>
+
+  <style>
+    body {
+      background-color: lightblue;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 30px;
+    }
+
+    h1 {
+      color: darkblue;
+    }
+
+    button {
+      background-color: darkblue;
+      color: white;
+      font-size: 18px;
+      padding: 10px 18px;
+      margin: 10px;
+      border: none;
+      border-radius: 6px;
+    }
+
+    #hobbyDetails {
+      background-color: white;
+      color: #333333;
+      width: 60%;
+      padding: 20px;
+      margin: 20px auto;
+      border: 2px solid darkblue;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body onload="welcomeMessage()">
+
+  <h1>My Hobbies</h1>
+
+  <p>Click the buttons below to learn about my hobbies.</p>
+
+  <button onclick="showHobbies()">Show My Hobbies</button>
+
+  <button onclick="showFavouriteHobby()">My Favourite Hobby</button>
+
+  <button onclick="clearHobbies()">Clear</button>
+
+  <div id="hobbyDetails">
+    My hobby details will appear here.
+  </div>
+
+  <script>
+    function welcomeMessage() {
+      console.log("Welcome to my hobbies webpage!");
+    }
+
+    function showHobbies() {
+      document.getElementById("hobbyDetails").innerHTML =
+        "<h2>My Hobbies</h2>" +
+        "<p>I enjoy reading books, drawing, cycling and playing cricket.</p>";
+    }
+
+    function showFavouriteHobby() {
+      document.getElementById("hobbyDetails").innerHTML =
+        "<h2>My Favourite Hobby</h2>" +
+        "<p>My favourite hobby is cycling because it keeps me active and healthy.</p>";
+    }
+
+    function clearHobbies() {
+      document.getElementById("hobbyDetails").innerHTML =
+        "My hobby details will appear here.";
+    }
+  </script>
+
+</body>
+
+</html>
+```
