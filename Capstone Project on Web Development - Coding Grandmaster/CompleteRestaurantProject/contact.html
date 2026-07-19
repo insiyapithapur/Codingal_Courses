@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Contact Us | Sam's Food Corner</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <nav class="topnav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="menu.html">Menu</a>
+    <a href="gallery.html">Food Gallery</a>
+    <a class="active" href="contact.html">Contact Us</a>
+  </nav>
+
+  <header class="page-header">
+    <h1>Contact Us</h1>
+
+    <p>
+      Contact us for reservations, enquiries and food orders.
+    </p>
+  </header>
+
+  <main>
+
+    <section class="contact-section">
+
+      <div class="contact-information">
+        <h2>Restaurant Information</h2>
+
+        <p>
+          <strong>Restaurant:</strong> Sam's Food Corner
+        </p>
+
+        <p>
+          <strong>Phone:</strong> +91 98765 43210
+        </p>
+
+        <p>
+          <strong>Email:</strong>
+          <a href="mailto:samsfoodcorner@example.com">
+            samsfoodcorner@example.com
+          </a>
+        </p>
+
+        <address>
+          21 Food Street,<br>
+          Ahmedabad, Gujarat,<br>
+          India
+        </address>
+      </div>
+
+      <form id="contactForm" onsubmit="submitForm(event)">
+
+        <fieldset>
+          <legend>Send Us a Message</legend>
+
+          <label for="name">Your Name:</label>
+
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+          >
+
+          <label for="age">Your Age:</label>
+
+          <input
+            type="number"
+            id="age"
+            name="age"
+            min="1"
+            required
+          >
+
+          <label for="email">Your Email:</label>
+
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+          >
+
+          <label for="subject">Subject:</label>
+
+          <select id="subject" name="subject">
+            <option>Table Reservation</option>
+            <option>Food Order</option>
+            <option>Feedback</option>
+            <option>General Enquiry</option>
+          </select>
+
+          <label for="message">Message:</label>
+
+          <textarea
+            id="message"
+            name="message"
+            rows="6"
+            required
+          ></textarea>
+
+          <button type="submit">Submit</button>
+        </fieldset>
+
+      </form>
+
+    </section>
+
+    <p id="formMessage"></p>
+
+  </main>
+
+  <footer>
+    <p>Copyright &copy; 2026 Sam's Food Corner</p>
+    <p>We would love to hear from you!</p>
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
